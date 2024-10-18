@@ -185,3 +185,187 @@ Lưu ý: Trong table sẽ có thêm 3 thẻ để nhóm các thành phần
 - tfoot: Nhóm các hàng đóng vai trò là chân bảng
 
 Tra cứu cú pháp gõ nhanh trong VSCode: https://docs.emmet.io/cheat-sheet/
+
+6. Form
+
+- Biểu mẫu để cho phép người nhập liệu hoặc lựa chọn sau đó gửi lên Server
+- Trong 1 trang web có thể có 1 hoặc nhiều form
+- Các form không được phép lồng nhau
+- Cấu tạo của form:
+
+```html
+<form action="" method="">
+  <!--
+    Trường nhập liệu
+    
+    Nút gửi
+    -->
+</form>
+```
+
+action: URL ở phía server
+method: Phương thức để gửi dữ liệu: GET, POST
+
+Các loại trường nhập liệu
+
+- label: Nhãn, dùng để mô tả tên của trường nhập liệu
+- input: Ô nhập liệu dạng 1 dòng
+
+* type: Kiểu dữ liệu sẽ nhận (Mặc định là text)
+* name: Tên của trường để Server nhận dữ liệu
+* id: Định danh của thẻ html
+* placeholder: Văn bản mô tả cho ô input
+* value: Giá trị mặc định của ô nhập liệu
+
+- button: Nút để gửi dữ liệu
+
+* type: Loại nút (Mặc định là submit), nhận các giá trị: submit, button, reset
+
+Tóm lại:
+
+- Thẻ form
+- Thẻ input: text, password, file, checkbox, radio
+- Thẻ textarea
+- Thẻ select
+- Thẻ button: submit
+
+Ngoài ra: Còn 1 số thẻ html5 ==> Học sau
+
+## Ngôn ngữ CSS
+
+- Ngôn ngữ định dạng HTML
+- Xây dựng các bố cục, giao diện, màu sắc cho trang HTML
+- Có phần mở rộng: .css
+
+Lưu ý:
+
+- File css không chạy độc lập
+- CSS cần phải đưa vào HTML
+
+### Các cách đưa CSS vào HTML
+
+1. Internal CSS
+
+- Đưa css vào html thông qua thẻ style
+
+```css
+<style>
+    bochon {
+        thuoctinh: giatri
+    }
+</style>
+```
+
+2. Inline CSS
+
+- Đưa CSS vào HTML thông qua thuộc tính style tại mỗi thẻ html
+
+3. External CSS
+
+- Đưa CSS vào HTML thông qua file css và liên kết thông qua thẻ link
+
+Khi làm việc với CSS, định danh phần tử HTML thông qua class và id
+
+Nguyên tắc chung:
+
+- Đặt tên tường minh
+- Không được bắt đầu bằng số
+- Đặt tên bằng Tiếng Anh
+- Sử dụng danh từ
+
+Class: Có thể đặt nhiều class trong 1 phần tử HTML: Mỗi class được phân biệt thông qua ký hiệu khoảng trắng
+Id: Chỉ được đặt 1 id trong 1 phần tử HTML
+
+### Cấu trúc chung của CSS
+
+```css
+selector1 {
+  thuoctinh1: giatri1;
+  thuoctinh2: giatri2;
+  thuoctinh3: giatri3;
+}
+selector2 {
+  thuoctinh1: giatri1;
+  thuoctinh2: giatri2;
+  thuoctinh3: giatri3;
+}
+selector3 {
+  thuoctinh1: giatri1;
+  thuoctinh2: giatri2;
+  thuoctinh3: giatri3;
+}
+```
+
+### Bộ chọn CSS (Selector)
+
+- Nếu HTML dùng id ==> CSS theo cú pháp: #tenid
+- Nếu HTML dùng class ==> CSS theo cú pháp: .tenclass
+- Nếu HTML dùng tag (tên thẻ html) ==> CSS theo cú pháp: tenthe
+
+Selector phân cấp
+
+- Nằm trong
+
+```css
+selector1 selector2 selector3 selectorn {
+  thuoctinh: giatri;
+}
+```
+
+- Con trực tiếp
+
+```css
+selector1 > selector2 > selector3 > selectorn {
+  thuoctinh: giatri;
+}
+```
+
+Selector cùng cấp
+
+```css
+selector1selector2selectorn {
+  thuoctinh: giatri;
+}
+```
+
+Selector ngang hàng không liền kề
+
+```CSS
+selector1 ~ selector2 {
+    thuoctinh: giatri
+}
+```
+
+Selector ngang hàng liền kề
+
+```CSS
+selector1 + selector2 {
+    thuoctinh: giatri
+}
+```
+
+Selector theo thuộc tính
+
+[tenthuoctinh]: Chọn các thẻ html có thuộc tính đã khai báo
+
+[tenthuoctinh="giatri"]: Chọn các thẻ html có thuộc tính khớp với giá trị đã khai báo
+
+[tenthuoctinh^="giatri"]: Chọn các thẻ html có thuộc tính bắt đầu bằng giá trị đã khai báo
+
+[tenthuoctinh*="giatri"]: Chọn các thẻ html có thuộc tính mà bên trong có giatri
+
+[tenthuoctinh$="giatri"]: Chọn các thẻ html có thuộc tính mà giá trị nằm ở cuối
+
+### Pseudo
+
+1. Phần tử giả (Pseudo Element)
+   selector::tenphantugia
+
+- before
+- after
+- selection
+- placeholder
+- first-line
+- first-letter
+
+2. Lớp giả (Pseudo Class)

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" method="">
+      <div>
+        <label for="fullname"> Họ và tên </label>
+        <input
+          type="text"
+          id="fullname"
+          name="fullname"
+          placeholder="Vui lòng nhập họ tên..."
+          value=""
+        />
+      </div>
+      <div>
+        <label for="email"> Email </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Vui lòng nhập email..."
+          value=""
+        />
+      </div>
+      <div>
+        <label for="password"> Mật khẩu </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Vui lòng nhập mật khẩu..."
+          value=""
+        />
+      </div>
+      <div>
+        <label for="age"> Tuổi </label>
+        <input
+          type="number"
+          id="age"
+          name="age"
+          placeholder="Vui lòng nhập tuổi..."
+          min="10"
+          max="50"
+          step="0.1"
+          value=""
+        />
+      </div>
+      <div>
+        <label for="birthday"> Ngày sinh </label>
+        <input type="date" id="birthday" name="birthday" />
+      </div>
+      <div>
+        <label for="avatar"> Ảnh đại diện </label>
+        <input type="file" id="avatar" name="avatar" multiple />
+      </div>
+      <div>
+        <label>Giới tính</label>
+        <label>
+          <input type="radio" name="gender" value="0" /> Không xác định
+        </label>
+        <label>
+          <input type="radio" name="gender" value="1" checked /> Nam
+        </label>
+        <label> <input type="radio" name="gender" value="2" /> Nữ </label>
+      </div>
+      <div>
+        <label>Sở thích</label>
+        <label>
+          <input type="checkbox" name="hobby" value="1" /> Nghe nhạc
+        </label>
+        <label>
+          <input type="checkbox" name="hobby" value="2" checked /> Xem phim
+        </label>
+        <label>
+          <input type="checkbox" name="hobby" value="3" /> Đọc sách
+        </label>
+      </div>
+      <div>
+        <label for="color"> Chọn màu </label>
+        <input type="color" id="color" name="color" />
+      </div>
+      <div>
+        <label for="rate"> Chọn tỷ lệ </label>
+        <input type="range" id="rate" name="rate" value="70" />
+      </div>
+      <div>
+        <label for="message"> Tin nhắn </label>
+        <textarea
+          name="message"
+          id="message"
+          placeholder="Tin nhắn..."
+        ></textarea>
+      </div>
+      <div>
+        <label for="province"> Tỉnh/Thành phố </label>
+        <select name="province" id="province">
+          <option value="0">Chọn Tỉnh/Thành phố</option>
+          <option value="1">Hà Nội</option>
+          <option value="2" selected>Hồ Chí Minh</option>
+          <option value="3">Đà Nẵng</option>
+        </select>
+      </div>
+      <input type="hidden" name="token" value="ahihi" />
+      <button type="submit">Đăng ký</button>
+      <button type="reset">Reset</button>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+/* h1::before,
+h1::after {
+  content: "A";
+  color: red;
+} */
+/* h1::after {
+  content: "A";
+  color: red;
+} */
+/* p::first-line {
+  color: green;
+} */
+/* p::first-letter {
+  color: red;
+} */
+/* p::selection {
+  background: black;
+  color: #fff;
+} */
+
+/* .box {
+  background: green;
+  padding: 20px;
+}
+.box input {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+}
+.box input::placeholder {
+  color: #fff;
+} */
+body {
+  height: 2000px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: green;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: red;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: blueviolet;
+}

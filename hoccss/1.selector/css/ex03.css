@@ -1,0 +1,12 @@
+/* h2 ~ p {
+  background: green;
+} */
+
+/* h2 + p + p {
+  background: green;
+} */
+
+ul li input:checked ~ span {
+  color: red;
+  text-decoration: line-through;
+}

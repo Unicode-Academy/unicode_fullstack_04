@@ -1,0 +1,15 @@
+/* ul li a[target] {
+  color: red;
+} */
+/* ul li a[target="_self"] {
+  color: red;
+} */
+/* ul li a[href*="unicode.vn"] {
+  background: yellow;
+} */
+/* ul li a[href$=".vn"] {
+  background: yellow;
+} */
+ul li a[title~="Bao"] {
+  background: yellow;
+}
