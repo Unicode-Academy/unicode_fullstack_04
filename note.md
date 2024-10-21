@@ -369,3 +369,122 @@ Selector theo thuộc tính
 - first-letter
 
 2. Lớp giả (Pseudo Class)
+
+selector:tenlopgia
+
+- hover: Trỏ chuột vào
+- active: Click và giữ chuột
+- focus: Chỉ áp dụng được với form
+- not(selector): Chọn tất cả thành phần trừ selector nào đó được khai báo
+- first-child: Chọn phần tử con đầu tiên trong 1 danh sách
+- last-child: Chọn phần tử con cuối cùng trong 1 danh sách
+- first-of-type, last-of-type
+- nth-child
+- nth-of-type
+
+Lưu ý:
+
+- Phân biệt được child và of-type
+- first, last: Chọn đầu tiên và cuối cùng
+- nth: Chọn theo thứ tự
+
+- disabled: Áp dụng với tất cả trong form
+- checked: Chỉ áp dụng với radio và checkbox
+- valid: Kiểm tra input có dữ liệu hay không
+
+## Các thuộc tính định dạng văn bản
+
+1. Thuộc tính color
+
+- Thay đổi màu văn bản
+- Thuộc tính kế thừa (Thay đổi màu của cha, con sẽ tự động đổi)
+- Cú pháp: color: giatrimau (tenmau, mamau)
+
+Lưu ý: Các thuộc tính css thường sẽ có các giá trị sau
+
+- inherit --> Kế thừa từ phần tử cha
+- initial --> Lấy giá trị ban đầu của trình duyệt
+
+Trong giá trị màu, có giá trị transparent (Màu trong suốt)
+
+2. Thuộc tính font-size
+
+- Thay đổi cỡ chữ cho văn bản
+- Cú pháp: font-size: giatri + donvi
+
+Danh sách đơn vị
+
+- px: Đơn vị tuyệt đối
+- pt: 1.3 lần px
+- em: Tỷ lệ với font-size của phần tử cha
+- rem: Tỷ lệ với font-size mặc định của trình duyệt
+- %: Tỷ lệ với font-size của phần tử cha
+
+3. Thuộc tính font-family
+
+- Thay đổi font chữ cho văn bản
+- Cú pháp: font-family: font1, font2, font3,....
+- 2 họ font mặc định:
+
+* sans-serif: Họ không chân
+* serif: Họ có chân
+
+Gia đình font
+
+- Trong 1 fonnt chữ sẽ nhiều kiểu: đậm nhạt và nghiêng
+- Quy ước đặc điểm của các kiểu thông qua 2 thuộc tính
+
+* font-weight: 100 ==> 900 (Bội số của 100), normal, bold ==> Quy ước độ dày của văn bản
+* font-style: normal | italic ==> Văn bản nghiêng hoặc thẳng đứng
+
+Các loại font
+
+- Font Variable: Tổng hợp các style vào trong 1 file font
+- Font Static: Mỗi file font chỉ có 1 kiểu
+
+4. Thuộc tính line-height
+
+- Thiết lập chiều cao của dòng trong văn bản (Giãn dòng)
+- Cú pháp: line-height: giatri
+
+Lưu ý:
+
+- Thuộc tính line-height không nên sử dụng đơn vị tuyệt đối mà thường sẽ không dùng đơn vị
+- Giá trị suy ra của line-height sẽ tỷ lệ font-size của chính nó
+
+5. Thuộc tính text-decoration
+
+- Quy định kiểu gạch của văn bản: gạch dưới, gạch trên, gạch ngang
+- Cú pháp: text-decoration: none|underline|overline|line-through
+
+6. Thuộc tính text-transform
+
+- Thay đổi kiểu dạng của văn bản: chữ thường, chữ hoa
+- Cú pháp: text-transform: none|lowercase|uppercase|capitalize
+
+7. Thuộc tính letter-spacing
+
+- Quy định khoảng cách giữa các ký tự
+- Cú pháp: letter-spacing: giatri + donvi
+
+8. Thuộc tính word-spacing
+
+- Quy định khoảng cách giữa các từ
+- Cú pháp: word-spacing: giatri + donvi
+
+9. Thuộc tính word-break
+
+- Wrap nội dung khi bị tràn khung
+- Cú pháp: word-break: keep-all|break-all
+
+Nên sử dụng word-wrap: break-word để chữ mang ý nghĩa rõ ràng
+
+10. Thuộc tính text-align
+
+- Căn chỉnh vị trí của văn bản theo chiều ngang
+- Cú pháp: text-align: left|center|right|justify
+
+Lưu ý:
+
+- Chỉ áp dụng thuộc tính này trong thẻ block
+- Nếu các phần tử bên trong không phải là văn bản mà là các thẻ inline ==> Mang ý nghĩa tương tự

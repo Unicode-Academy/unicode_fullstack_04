@@ -1,0 +1,73 @@
+/* .title:hover {
+  color: red;
+}
+.title:active {
+  color: green;
+}
+.title:focus {
+  background: yellow;
+}
+input:focus,
+button:focus {
+  background: yellow;
+}
+input:focus::placeholder {
+  color: red;
+}
+input:focus ~ button {
+  background: green;
+  color: #fff;
+} */
+
+/* ul li:not(.item, .item-2) {
+  color: red;
+} */
+
+/* .posts h2:first-child {
+  color: red;
+} */
+/* .posts h2:first-of-type {
+  color: red;
+} */
+/* .posts h2:last-child {
+  color: green;
+} */
+/* .posts h2:last-of-type {
+  color: green;
+} */
+/* .posts h2:nth-child(2n + 1) {
+  color: red;
+} */
+/* .posts h2:nth-of-type(2n + 1) {
+  color: red;
+} */
+/* .checkbox input:checked ~ span {
+  color: red;
+}
+.checkbox input:disabled ~ span {
+  color: grey;
+}
+.checkbox input:checked:disabled ~ span {
+  text-decoration: line-through;
+} */
+
+/* form fieldset:disabled {
+  background: gray;
+}
+form fieldset:disabled input {
+  background: transparent;
+}
+form input:valid {
+  background: yellow;
+} */
+
+#color-red:checked ~ p,
+#color-red:checked ~ div label[for="color-red"] {
+  color: red;
+}
+#color-green:checked ~ p {
+  color: green;
+}
+#color-blue:checked ~ p {
+  color: blue;
+}
