@@ -1,0 +1,9 @@
+.box {
+  height: 400px;
+  color: red;
+  background: yellow;
+  /* filter: opacity(0); */
+  /* opacity: 0.5; */
+  /* filter: grayscale(24%) sepia(47%) blur(1px) brightness(123%) hue-rotate(34deg)
+    saturate(177%) contrast(198%); */
+}

@@ -1,0 +1,42 @@
+/* html {
+  background: yellow;
+}
+.box {
+  background-color: red;
+} */
+
+/* body {
+  height: 2000px;
+  background-color: yellow;
+  background-image: url("https://fastly.picsum.photos/id/674/536/354.jpg?hmac=FcSzOn4i7-vaFGmVHe1jxmk2P3XECmR47OdbPoxiMuc");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-attachment: fixed;
+} */
+
+/* .box {
+  width: 700px;
+  height: 400px;
+  background-color: yellow;
+  background-image: url("https://fastly.picsum.photos/id/643/2000/700.jpg?hmac=CKd98_-qwe8gtCU7ad3Re1Th3EbtZuTLquZk_vIbnLw");
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
+
+.banner {
+  height: 400px;
+  /* background-image: url("https://fastly.picsum.photos/id/643/2000/700.jpg?hmac=CKd98_-qwe8gtCU7ad3Re1Th3EbtZuTLquZk_vIbnLw");
+  background-size: cover;
+  background-attachment: fixed; */
+  background: yellow
+    url("https://fastly.picsum.photos/id/643/2000/700.jpg?hmac=CKd98_-qwe8gtCU7ad3Re1Th3EbtZuTLquZk_vIbnLw")
+    0 0 / cover fixed;
+  line-height: 400px;
+}
+.banner h2 {
+  text-align: center;
+  color: #fff;
+}
+p {
+  height: 400px;
+}

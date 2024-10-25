@@ -1,0 +1,25 @@
+/* .box {
+  width: 300px;
+  font-size: 20px;
+  border: 1px solid red;
+  padding-top: 50%;
+} */
+
+/* .wrapper {
+  width: 100%;
+  background: red;
+}
+.wrapper .box {
+  padding-top: 56.25%;
+} */
+
+.box {
+  background: yellow;
+}
+a {
+  background: green;
+  padding: 10px 30px;
+  color: #fff;
+  text-decoration: none;
+  display: inline-block;
+}
