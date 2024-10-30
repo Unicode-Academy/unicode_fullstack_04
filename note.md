@@ -689,3 +689,82 @@ Lưu ý:
 - Thuộc tính height sẽ chạy từ min-height đến max-height (Không thể vượt qua được khoảng min đến max)
 
 Đơn vị: Giống như width, height
+
+## Thuộc tính position
+
+- Cú pháp: position: static|relative|absolute|fixed
+- Thuộc tính mở rộng
+
+* top: Vị trí đầu
+* left: Vị trí trái
+* right: Vị trí phải
+* bottom: Vị trí dưới
+* z-index: Vị trí theo trục Z (Vuông góc với màn hình)
+* inset: Viết tắt của top, left, right, bottom
+
+Lưu ý:
+
+- Bất kỳ phần tử nào có position (Trừ static) luôn nằm trên
+- Nếu 2 phần tử đều có position ==> HTML đứng sau thì sẽ nằm trên
+- Nếu muốn phần tử nào nằm trên, có 2 điều kiện
+
+* Có position
+* Giá trị thuộc tính z-index cao hơn
+
+## Flexbox
+
+- Kỹ thuật css để chia layout trên trang web
+- Flex có 2 phần
+
+* Flex Container
+* Flex Item
+
+### Các thuộc tính trong nhóm flex container
+
+- display: flex ==> Kích hoạt flex
+- flex-direction: Chọn hướng cho trục chính
+
+* row: Nằm ngang
+* row-reverse: Đảo ngược
+* column: Nằm dọc
+* column-reverse: Nằm dọc, đảo ngược
+
+- justify-content: Căn chỉnh các item theo hướng song song với trục chính
+
+* flex-start
+* center
+* flex-end
+* space-between
+* space-around
+* space-evenly
+
+- align-items: Căn chỉnh các item theo hướng vuông góc với trục chính
+
+* stretch: Dãn đều theo chiều cao (rộng) của container
+* flex-start
+* flex-end
+* center
+* baseline
+
+- flex-wrap: Wrap các item khi vượt ra khỏi kích thước của container
+
+* nowrap
+* wrap
+* wrap-reverse
+
+- align-content: Căn chỉnh hàng và cột (Chỉ áp dụng khi có từ 2 hàng hoặc 2 cột trở lên)
+
+* stretch
+* flex-start
+* center
+* flex-end
+* space-between
+* space-around
+* space-evenly
+
+- gap: Căn chỉnh khoảng cách giữa các item
+  Cú pháp: gap row-value col-value
+
+- row-gap: Căn chỉnh khoảng cách giữa các hàng
+
+- column-gap: Căn chỉnh khoảng cách giữa các cột

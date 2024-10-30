@@ -1,0 +1,41 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.modal {
+  display: none;
+}
+.modal .modal-dialog {
+  background: #fff;
+  position: absolute;
+  top: 5%;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  width: 80%;
+  margin: 0 auto;
+  padding: 30px;
+}
+.modal .modal-dialog h2 {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+.modal .modal-dialog .close {
+  position: absolute;
+  right: 30px;
+  cursor: pointer;
+}
+.modal .modal-dialog .close:hover {
+  color: red;
+}
+.modal .overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: #00000084;
+}
+#modal:checked + .modal {
+  display: block;
+}

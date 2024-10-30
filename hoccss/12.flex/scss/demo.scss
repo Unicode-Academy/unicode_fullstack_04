@@ -1,0 +1,13 @@
+$primaryColor: rgb(52, 252, 7);
+.box {
+  padding: 30px;
+  .heading {
+    color: $primaryColor;
+  }
+}
+$number: 12;
+@for $i from 1 through $number {
+  .box-#{$i} {
+    width: 10% * $i;
+  }
+}

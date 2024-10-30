@@ -1,0 +1,19 @@
+.box {
+  border: 1px solid red;
+  width: 600px;
+  height: 400px;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  /* align-items: flex-start; */
+  flex-wrap: wrap;
+  /* align-content: space-around; */
+  gap: 50px 30px;
+}
+.item {
+  padding: 20px;
+  background: green;
+  color: #fff;
+  border: 1px solid #fff;
+}
