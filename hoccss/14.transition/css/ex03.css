@@ -1,0 +1,35 @@
+.switch-toggle {
+  display: block;
+  width: 80px;
+  height: 30px;
+  background: gray;
+  border-radius: 99px;
+  margin: 30px auto;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+.switch-toggle .btn {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  bottom: 1px;
+  display: block;
+  width: 28px;
+  height: 28px;
+  background: #fff;
+  border-radius: 50%;
+  transition: left 0.3s ease;
+  z-index: 1;
+}
+.switch-toggle .bg {
+  position: absolute;
+  inset: 0;
+  transition: background 0.3s ease;
+}
+.switch-toggle input:checked + .btn {
+  left: calc(100% - 29px);
+}
+.switch-toggle input:checked ~ .bg {
+  background: green;
+}

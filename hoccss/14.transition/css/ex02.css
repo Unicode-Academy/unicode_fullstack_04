@@ -1,0 +1,42 @@
+.btn {
+  display: block;
+  margin: 30px auto;
+  background: green;
+  color: #fff;
+  padding: 5px 20px;
+  border: 0;
+  border-radius: 99px;
+  position: relative;
+  overflow: hidden;
+}
+.btn span {
+  position: relative;
+}
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 100%;
+  background: red;
+  transition: right 0.3s ease;
+}
+.btn:hover::before {
+  right: 0;
+}
+/* .btn .text {
+  position: relative;
+}
+.btn .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 100%;
+  background: red;
+  transition: right 0.3s ease;
+}
+.btn:hover .overlay {
+  right: 0;
+} */
