@@ -1,0 +1,29 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.box {
+  width: 600px;
+  height: 400px;
+  margin: 30px auto;
+  border: 1px solid red;
+  display: flex;
+  overflow: auto;
+}
+.item {
+  padding: 30px;
+  background: green;
+  color: #fff;
+  border: 1px solid #fff;
+  flex: 1 0 auto;
+}
+.item:nth-child(1) {
+  order: 1;
+}
+.item:nth-child(3) {
+  order: 2;
+}
+.item:nth-child(4) {
+  order: -1;
+}

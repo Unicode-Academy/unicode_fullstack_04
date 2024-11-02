@@ -768,3 +768,50 @@ Lưu ý:
 - row-gap: Căn chỉnh khoảng cách giữa các hàng
 
 - column-gap: Căn chỉnh khoảng cách giữa các cột
+
+### Các thuộc tính trong nhóm flex item
+
+- flex-grow: Lấp đầy các item vào vị trí còn trống của container
+- flex-shrink: Co lại theo tỷ lệ (Mặc định là 1)
+- flex-basis: Thiết lập kích thước ban đầu của flex
+  Lưu ý: Khi dùng flex-basis nên kết hợp với min-width, max-width, min-height, max-height
+- flex: Gộp 3 trường hợp trên
+  Cú pháp: flex grow shrink basis
+- order: Sắp xếp các item
+
+## Thuộc tính overflow
+
+- Xử lý nội dung bị tràn
+
+* visible => Giữ nguyên
+* hidden => Ẩn
+* scroll => Tạo thanh cuộn
+* auto => Chỉ tạo thanh cuộn khi bị tràn
+
+## Thuộc tính transition
+
+- Tạo hiệu ứng chuyển động
+- Chỉ áp dụng cho các thuộc tính có giá trị là số
+
+Các thuộc tính:
+
+- transition-property ==> Khai báo thuộc tính css muốn có chuyển động
+  Ví dụ: transition-property: width, color
+  Lưu ý: Có thể để giá trị all ==> Áp dụng với tất cả thuộc tính
+- transition-duration ==> Khai báo tổng thời gian hoàn thành chuyển động (s, ms)
+- transition-timing-function ==> Khai báo tốc độ di chuyển theo từng đoạn
+
+* ease
+* ease-in
+* ease-out
+* ease-in-out
+* linear
+
+- transition-delay: Trễ 1 khoảng thời gian trước khi chuyển động
+- transition: Tổng hợp tất cả
+
+## Thuộc tính visibility
+
+Cú pháp: visibility: visible | hidden
+
+Tác dụng: Ẩn không làm mất không gian
