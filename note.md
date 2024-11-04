@@ -815,3 +815,128 @@ Các thuộc tính:
 Cú pháp: visibility: visible | hidden
 
 Tác dụng: Ẩn không làm mất không gian
+
+## Thuộc tính transform
+
+- Thay đổi hình dạng ban đầu của thẻ html
+- transform: value
+
+Xoay:
+
+- rotate(angle) ==> Xoay theo trục Z
+- rotateX(angle) ==> Xoay theo trục X
+- rotateY(angle) ==> Xoay theo trục Y
+
+Nghiêng:
+
+- skew(anglex, angley) ==> Nghiêng theo trục x, y
+- skewX(angleX) ==> Nghiêng theo trục X
+- skewY(angleY) ==> Nghiêng theo trục Y
+
+Phóng to / Thu nhỏ
+
+- scale(x,y) ==> Phóng to / thu nhỏ theo tỷ lệ x, y
+- scaleX(x) ==> Phóng to / thu nhỏ theo trục X
+- scaleY(y) ==> Phóng to / thu nhỏ theo trục Y
+
+Di chuyển
+
+- translate(x, y) ==> Di chuyển x, y theo trục x và trục y
+- translateX(x) ==> Di chuyển theo trục X
+- translateY(y) ==> Di chuyển theo trục Y
+
+Lưu ý khi dùng đơn vị phần trăm
+
+- Tỷ lệ với kích thước của khối đang di chuyển
+- Các thuộc tính mở rộng
+  => rotate: value ==> Tương đương với transform: rotate(angle)
+  => scale: x y ==> Tương đương với transform: scale(x,y)
+  => translate: x y ==> Tương đương với transform: translate(x,y)
+
+Thuộc tính transform-origin: x y
+
+==> Chọn vị trí trục cho transform (Mặc định sẽ là: 50% 50%)
+
+## Responsive
+
+- Kỹ thuật sử dụng CSS để thay đổi giao diện giữa các thiết bị (Dựa vào chiều rộng của thiết bị)
+- Trên thực tế: Kết hợp giữa Adative và Responsive
+
+1. Breakpoint
+
+- Điểm dừng kích thước màn hình ==> Tại đó giao diện sẽ thay đổi
+- Breakpoint phổ biến
+
+* 1400
+* 1200
+* 992
+* 768
+* 576
+
+2. Media query
+
+```css
+@media screen and (max-width: breakpoint) {
+  selector {
+    css
+  }
+}
+```
+
+Breakpoint 1400px
+
+```css
+@media screen and (max-width: 1399.98px) {
+  selector {
+    css
+  }
+}
+```
+
+Breakpoint 1200px
+
+```css
+@media screen and (max-width: 1199.98px) {
+  selector {
+    css
+  }
+}
+```
+
+Breakpoint 992px
+
+```css
+@media screen and (max-width: 991.98px) {
+  selector {
+    css
+  }
+}
+```
+
+Breakpoint 768px
+
+```css
+@media screen and (max-width: 767.98px) {
+  selector {
+    css
+  }
+}
+```
+
+Breakpoint 576px
+
+```css
+@media screen and (max-width: 575.98px) {
+  selector {
+    css
+  }
+}
+```
+
+Lưu ý:
+
+- Không phải dự án nào cũng dùng hết breakpoint
+- Thường sẽ có 3 breakpoint
+
+* 992px
+* 768px

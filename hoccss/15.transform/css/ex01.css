@@ -1,0 +1,19 @@
+.container {
+  width: 300px;
+  height: 300px;
+  border: 1px solid red;
+  margin: 30px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box {
+  width: 150px;
+  height: 150px;
+  background: green;
+  transition: transform 0.4s ease;
+  transform-origin: 50% 0;
+}
+.container:hover .box {
+  transform: scale(2);
+}
