@@ -1,0 +1,107 @@
+// .d-none {
+//   display: none;
+// }
+// .d-block {
+//   display: block;
+// }
+// .d-flex {
+//   display: flex;
+// }
+// @media screen and (max-width: 991.98px) {
+//   .d-md-none {
+//     display: none;
+//   }
+//   .d-md-block {
+//     display: block;
+//   }
+//   .d-md-flex {
+//     display: flex;
+//   }
+// }
+// @media screen and (max-width: 767.98px) {
+//   .d-sm-none {
+//     display: none;
+//   }
+//   .d-sm-block {
+//     display: block;
+//   }
+//   .d-sm-flex {
+//     display: flex;
+//   }
+// }
+// @media screen and (max-width: 576.98px) {
+//   .d-xs-none {
+//     display: none;
+//   }
+//   .d-xs-block {
+//     display: block;
+//   }
+//   .d-xs-flex {
+//     display: flex;
+//   }
+// }
+
+//Vòng lặp @for
+// @for $i from 10 through 1 {
+//   .box-#{$i} {
+//     @if $i % 2 == 0 {
+//       width: 100px;
+//     } @else {
+//       width: 100%;
+//     }
+//   }
+// }
+
+//Vòng lặp @each
+// $sizes: 20px 40px 60px 80px; //Danh sách
+// $count: 0;
+// @each $size in $sizes {
+//   $count: $count + 1;
+//   .box-#{$count} {
+//     width: $size;
+//   }
+// }
+
+// $sizes: (small 20px 300) (medium 40px 400) (large 60px 500);
+// @each $name, $size, $weight in $sizes {
+//   .box-#{$name} {
+//     font-size: $size;
+//     font-weight: $weight;
+//   }
+// }
+
+// $sizes: (
+//   small: 20px,
+//   //key: value
+//   medium: 40px,
+//   large: 60px,
+// ); // --> map
+// @each $name, $size in $sizes {
+//   .box-#{$name} {
+//     font-size: $size;
+//   }
+// }
+
+$breakpoints: (
+  xl: 1400px,
+  lg: 1200px,
+  md: 992px,
+  sm: 768px,
+  xs: 576px,
+);
+$displays: none block flex table inline inline-block inline-flex table-cell
+  list-item;
+@each $display in $displays {
+  .d-#{$display} {
+    display: $display;
+  }
+}
+@each $prefix, $width in $breakpoints {
+  @media screen and (max-width: #{$width - 0.02}) {
+    @each $display in $displays {
+      .d-#{$prefix}-#{$display} {
+        display: $display;
+      }
+    }
+  }
+}

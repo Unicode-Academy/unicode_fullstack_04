@@ -940,3 +940,78 @@ Lưu ý:
 
 * 992px
 * 768px
+
+## Animation
+
+- Triển khai hiệu ứng phức tạp theo 1 kịch bản nào
+- Cấu tạo bởi các frame và ghép lại
+
+```css
+@keyframes tenkeyframe {
+  from {
+  }
+  part2 {
+  }
+  part3 {
+  }
+  partn {
+  }
+  to {
+  }
+}
+```
+
+```css
+animation-name: tenkeyframe;
+animation-duration: thoigain
+animation-delay: thoigian
+animation-iteration-count: solan
+animation-timing-function: giongtransition
+```
+
+## Ngôn ngữ SCSS
+
+Biên dịch SCSS -> CSS
+
+1. Biên dịch 1 file scss -> css
+
+sass duong-dan-scss duong-dan-css
+
+Nếu muốn tự động biên dịch khi lưu lại, thêm --watch
+
+2. Biên dịch cả folder scss -> css
+
+sass scss:css
+
+### Cú pháp lồng selector
+
+```
+selector1 {
+  selector2 {
+    selector3 {
+
+    }
+  }
+}
+```
+
+-->
+
+```
+selector1 selector2 selector3 {
+
+}
+```
+
+Các toán tử:
+
+```
+>, <, >=, <=, ==, !=
+```
+
+Tập trung
+
+- Cú pháp lồng
+- Biến
+- Mixin
+- Tách file: @use

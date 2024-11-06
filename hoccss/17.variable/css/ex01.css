@@ -1,0 +1,20 @@
+:root {
+  --primary-color: rgb(140, 6, 4);
+  --secondary-color: green;
+}
+h1 {
+  color: var(--primary-color);
+}
+p {
+  color: var(--secondary-color);
+}
+.box {
+  --box-color: blueviolet;
+  border: 1px solid var(--box-color);
+}
+.box h2 {
+  background: var(--box-color);
+}
+.content {
+  color: var(--box-color);
+}

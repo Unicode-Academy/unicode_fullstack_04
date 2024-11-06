@@ -1,0 +1,52 @@
+//comment scss
+/* comment css */
+@use "./variable";
+@use "./mixin";
+:root {
+  --primary-color: rgb(140, 6, 4);
+}
+
+.header {
+  @include mixin.container;
+  background: variable.$primary-color;
+  padding: 30px;
+  .logo {
+    max-width: 100%;
+    img {
+      height: 80px;
+    }
+  }
+  .menu {
+    background: variable.$secondary-color;
+    ul {
+      display: flex;
+      background: var(--primary-color);
+      > li {
+        > a {
+          display: block;
+          &:hover {
+            background: green;
+          }
+          &::before {
+            content: "";
+          }
+        }
+        + li {
+          border-left: 1px solid #ccc;
+        }
+      }
+    }
+  }
+}
+
+$size: 10;
+$name: "large";
+$number: 10;
+$font: "Roboto", sans-serif;
+.box {
+  font-size: #{$size * 2}px;
+}
+.box-#{$name + "-" + $number} {
+  width: 100%;
+  font-family: $font;
+}

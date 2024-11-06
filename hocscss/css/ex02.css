@@ -1,0 +1,13 @@
+.menu {
+  display: flex;
+}
+.menu li a {
+  display: block;
+  padding: 10px 20px;
+}
+.menu li a.active, .menu li a:hover {
+  background: green;
+  color: yellow;
+}
+
+/*# sourceMappingURL=ex02.css.map */

@@ -1,0 +1,16 @@
+.menu {
+  display: flex;
+  li {
+    a {
+      display: block;
+      padding: 10px 20px;
+      &.active {
+        background: green;
+        color: yellow;
+      }
+      &:hover {
+        @extend .active;
+      }
+    }
+  }
+}
