@@ -26,15 +26,22 @@ console.log(output);
 // console.log(isValid);
 
 //Bài tập:
-let str = "Học lập trình không khó UNICODE ACADEMY";
-let keyword = "UNICODE";
+let str =
+  "Học lập trình không khó UNICODE ACADEMY. Học lập trình không khó UNICODE ACADEMY. Học lập trình không khó UNICODE ACADEMY";
+let keyword = "h";
+let content = "";
 let index = str.toLowerCase().indexOf(keyword.toLowerCase());
-
-if (index !== -1) {
-  str =
+let count = 0;
+while (index !== -1) {
+  content +=
     str.slice(0, index) +
-    `<span>${str.slice(index, index + keyword.length)}</span>` +
-    str.slice(index + keyword.length);
+    `<span>${str.slice(index, index + keyword.length)}</span>`;
+  str = str.slice(index + keyword.length);
+  index = str.toLowerCase().indexOf(keyword.toLowerCase());
+  count++;
 }
-
-document.body.innerHTML = str;
+content += str;
+document.body.innerHTML = `<p>Tìm kiếm từ khóa: ${keyword}</p>
+<p>${content}</p>
+<p>Số lần: ${count}</p>
+`;
