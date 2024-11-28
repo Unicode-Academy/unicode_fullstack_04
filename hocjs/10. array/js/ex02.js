@@ -278,9 +278,128 @@ sort(function(a, b) {
 // console.log(result);
 
 //Bài tập
-const arr1 = [1, 2, 5, 6, 9];
-const arr2 = [5, 2, 8];
+// const arr1 = [1, 2, 5, 6, 9];
+// const arr2 = [5, 2, 8];
 //Tìm giao giữa 2 mảng (Phần tử xuất hiện cả trong mảng 1 và mảng 2)
 //Output: [2,5]
 
+// const numbers = [1, 2, 3, 4, 5];
+// let total = 0;
+// numbers.forEach(function (number) {
+//   total += number;
+// });
+// for (let i = 0; i < numbers.length; i++) {
+//   total += numbers[i];
+// }
+// console.log(total);
+
 //Hàm reduce
+/*
+reducer(callback, initialValue)
+
+callback có 3 tham số
+- prevValue
+- currentValue
+- currentIndex
+
+const result = array.reduce(function(prevValue, currentValue, currentIndex) {
+    //Logic
+    return somethingValue | expression
+}, initialValue)
+
+Cách hoạt động
+
+1. TH 1: Không có initialValue
+- Vòng lặp sẽ chạy từ phần tử thứ 2 đến hết
+- prevValue sẽ là phần tử đầu tiên
+- prevValue của lần lặp sau sẽ là return của lần lặp trước
+- Giá trị của reducer (result) chính là lần return cuối cùng của callback
+
+2. TH2: Có initialValue
+- Vòng chạy từ đầu cho đến hết
+- prevValue sẽ là initialValue
+- prevValue của lần lặp sau sẽ là return của lần lặp trước
+- Giá trị của reducer (result) chính là lần return cuối cùng của callback
+*/
+// const numbers = [5, 10, 15, 20, 25];
+// console.log(numbers);
+
+// const result = numbers.reduce(function (prevValue, currentValue) {
+//   console.log(prevValue, currentValue);
+//   return currentValue;
+// }, 0);
+// console.log(result);
+
+//Ví dụ: tính tổng
+// const numbers = [1, 2, 3, 4, 5];
+// const result = numbers.reduce(function (total, number) {
+//   console.log(total);
+
+//   return total + number;
+// }, 0);
+// console.log(result);
+
+//Ví dụ: tìm số lớn nhất (dùng reduce)
+// const numbers = [5, 2, 9, -1, 8];
+// const result = numbers.reduce(function (max, number) {
+//   //   return max < number ? number : max;
+//   if (max < number) {
+//     //Gán max = number
+//     return number;
+//   }
+//   return max;
+// });
+// console.log(result);
+
+// Bài tập: Tính tổng các số chẵn trong mảng sau (Dùng reduce)
+// const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// const result = numbers.reduce(function (total, number) {
+//   return number % 2 === 0 ? total + number : total;
+// }, 0);
+// console.log(result);
+
+//Bài tập: Tìm các số lẻ trong mảng sau và lưu vào mảng mới (Dùng reduce)
+// const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// const result = numbers.reduce(function (newArr, number) {
+//   if (number % 2 !== 0) {
+//     // newArr.push(number);
+//     return newArr.concat(number);
+//   }
+//   return newArr;
+// }, []);
+// console.log(result);
+
+//Bài tập: Tìm phần tử khác nhau giữa mảng 1 và mảng 2
+// const arr1 = [1, 2, 5, 6, 9];
+// const arr2 = [5, 2, 8];
+// // [1, 6, 9]
+// const result = arr1.reduce(function (newArr, number) {
+//   if (!arr2.includes(number)) {
+//     newArr.push(number);
+//   }
+//   return newArr;
+// }, []);
+// console.log(result);
+
+//Bài tập: Chia nhỏ mảng sau thành từng đoạn (Dùng reduce)
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+const size = 3;
+//[[1,2], [3,4], [5,6], [7,8], [9]]
+
+/*
+[[]] --> [[1]] --> [[1,2]] --> [[1,2], []]
+Kiểm tra mảng con có = size hay không? 
+[[1,2], [3]] --> [[1,2], [3,4]] 
+*/
+const result = numbers.reduce(
+  function (newArr, number) {
+    if (newArr[newArr.length - 1].length < size) {
+      newArr[newArr.length - 1].push(number);
+    } else {
+      newArr.push([number]);
+    }
+    return newArr;
+  },
+  [[]]
+);
+console.log(result);
