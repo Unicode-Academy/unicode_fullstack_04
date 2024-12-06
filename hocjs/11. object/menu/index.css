@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #2e3e4e;
+  font-family: Roboto, sans-serif;
+}
+.menu {
+  list-style: none;
+  width: 80%;
+  margin: 50px auto;
+  background: #204857;
+  font-size: 0;
+  border-radius: 5px;
+}
+.menu > li {
+  display: inline-block;
+}
+.menu li {
+  position: relative;
+}
+.menu > li > a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 25px;
+  display: block;
+  font-size: initial;
+  border-radius: 5px;
+}
+.menu > li:hover > a {
+  background: #e84c3d;
+}
+.menu > li ul {
+  display: none;
+  font-size: initial;
+  list-style: none;
+  position: absolute;
+  left: -20px;
+  background: #22a1cf;
+  min-width: 150px;
+}
+.menu > li ul ul {
+  left: 100%;
+  top: 0;
+}
+
+.menu > li ul li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 5px 10px;
+  border-bottom: 1px solid #fff;
+}
+
+.menu > li ul li a:hover {
+  background: #e84c3d;
+}
+
+.menu li:hover > ul {
+  display: block;
+}
