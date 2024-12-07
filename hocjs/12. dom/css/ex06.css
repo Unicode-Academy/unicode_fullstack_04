@@ -1,0 +1,37 @@
+.dialog {
+  position: fixed;
+  top: 10%;
+  left: 0;
+  right: 0;
+  width: 300px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid #ccc;
+  z-index: 1000;
+  padding: 10px;
+  border-radius: 10px;
+  visibility: hidden;
+  opacity: 0;
+  transition-property: visibility, opacity;
+  transition-duration: 0.4s;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #00000088;
+  visibility: hidden;
+  opacity: 0;
+  transition-property: visibility, opacity;
+  transition-duration: 0.4s;
+}
+body.open .dialog {
+  visibility: visible;
+  opacity: 1;
+}
+body.open .overlay {
+  visibility: visible;
+  opacity: 1;
+}
