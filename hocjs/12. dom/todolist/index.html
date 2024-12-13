@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="title-project">
+      <h1><i class="fa-solid fa-clipboard"></i> My Tasks</h1>
+    </div>
+    <form class="form" id="task-form">
+      <div class="new-task-form">
+        <label for="new-task">Add a new task</label>
+        <input id="new-task" type="text" placeholder="Try typing buy milk" />
+        <button id="submit" type="button">
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </form>
+    <ul id="to-do-list"></ul>
+    <script src="index.js"></script>
+  </body>
+</html>
