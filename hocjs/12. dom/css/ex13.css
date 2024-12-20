@@ -1,0 +1,18 @@
+.tags-wrap {
+  display: block;
+  border: 1px solid #ccc;
+  height: 20px;
+  width: 200px;
+  position: relative;
+  display: flex;
+  gap: 2px;
+  overflow: hidden;
+}
+.tags-wrap .item {
+  display: block;
+  background: greenyellow;
+  padding: 0 5px;
+}
+.tags-wrap .item span {
+  cursor: pointer;
+}
