@@ -30,12 +30,57 @@ const getUser = (userId) => {
 };
 
 const ids = [1, 2, 4];
-let total = 0;
-for (let i = 0; i < ids.length; i++) {
-  const userId = ids[i];
-  getUser(userId).then((data) => {
-    total += data.salary;
-    // console.log(total);
-  });
-}
-console.log(total);
+// const totalPromise = new Promise((resolve) => {
+//   let total = 0;
+//   let count = 0;
+//   for (let i = 0; i < ids.length; i++) {
+//     const userId = ids[i];
+//     getUser(userId).then((data) => {
+//       total += data.salary;
+//       count++;
+//       if (count === ids.length) {
+//         resolve(total);
+//       }
+//     });
+//   }
+// });
+// //Lấy giá trị total
+// totalPromise.then((data) => {
+//   console.log(data);
+// });
+
+//Multiple Promise
+// - Promise 1 -> Promise 2 -> Promise 3...
+// - Promise.all() --> Nhận 1 mảng chứa các promise cần xử lý
+
+//1. Tạo 1 mảng chứa danh sách các promise cần xử lý
+// const promiseList = ids.map((userId) => getUser(userId));
+
+//2. Đưa mảng trên vào Promise.all để lấy dữ liệu
+// Promise.all(promiseList).then((users) => {
+//   const total = users.reduce((prev, user) => user.salary + prev, 0);
+//   console.log(total);
+// });
+
+//Xử lý lỗi (Error Handling) --> Kỹ thuật bắt được lỗi xảy ra của chương trình trong quá trình biên dịch (Không xử lý được lỗi cú pháp)
+// try {
+//   //   const something = () => {
+//   //     console.log("something");
+//   //   };
+//   //   something();
+//   //   abc(); //Chuyển xuống catch ngay lập tức
+//   //   console.log("Unicode");
+//   let a = 10;
+//   let b = 0;
+//   if (b === 0) {
+//     throw new Error("B không được bằng 0");
+//   }
+
+//   let result = a / b;
+//   console.log(result);
+// } catch (error) {
+//   console.log(error.message);
+// } finally {
+//   console.log("Hoàn thành");
+// }
+// console.log("Done");
