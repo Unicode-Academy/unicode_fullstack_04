@@ -12,8 +12,52 @@
     },
     {
       "name": "Hoàng An Unicode",
-      "email": "hoangan.web@gmail.com",
+      "email": "contact@unicode.vn",
       "id": 4
+    },
+    {
+      "id": 5,
+      "name": "User 5",
+      "email": "user5@gmail.com"
+    },
+    {
+      "id": 6,
+      "name": "User 6",
+      "email": "user6@gmail.com"
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "Post 1",
+      "excerpt": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio reiciendis eum modi cupiditate delectus expedita"
+    },
+    {
+      "id": 2,
+      "title": "Post 2",
+      "excerpt": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio reiciendis eum modi cupiditate delectus expedita"
+    },
+    {
+      "id": 3,
+      "title": "Post 3",
+      "excerpt": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio reiciendis eum modi cupiditate delectus expedita"
+    },
+    {
+      "id": 4,
+      "title": "Post 4",
+      "excerpt": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio reiciendis eum modi cupiditate delectus expedita"
+    },
+    {
+      "title": "Post 5",
+      "excerpt": "Hello anh em",
+      "content": "Nội dung post 5",
+      "id": 5
+    },
+    {
+      "title": "Post 6",
+      "excerpt": "Mô tả 6",
+      "content": "Nội dung 6",
+      "id": 6
     }
   ]
 }

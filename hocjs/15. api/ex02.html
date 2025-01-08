@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Blogs</h1>
+      <button class="btn btn-primary mb-3 js-add-btn">Add new</button>
+      <div class="row">
+        <div class="col-9">
+          <input
+            type="search"
+            class="form-control mb-3 js-search"
+            placeholder="Keywords..."
+          />
+        </div>
+        <div class="col-3">
+          <div class="btn-group">
+            <button class="btn btn-primary active">Mới nhất</button>
+            <button class="btn btn-primary">Mới nhất</button>
+          </div>
+        </div>
+      </div>
+      <div class="row js-post-list"></div>
+    </div>
+    <!--Modal-->
+    <div
+      class="modal fade"
+      id="modal-form"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label>Title</label>
+                <input
+                  type="text"
+                  class="form-control title"
+                  placeholder="Title..."
+                />
+                <span class="error error-title text-danger"></span>
+              </div>
+              <div class="mb-3">
+                <label>Excerpt</label>
+                <textarea
+                  class="form-control excerpt"
+                  placeholder="Excerpt..."
+                ></textarea>
+                <span class="error error-excerpt text-danger"></span>
+              </div>
+              <div class="mb-3">
+                <label>Content</label>
+                <textarea
+                  class="form-control content"
+                  placeholder="Content..."
+                ></textarea>
+                <span class="error error-content text-danger"></span>
+              </div>
+              <button class="btn btn-success">Save</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <script src="js/ex02.js" type="module"></script>
+  </body>
+</html>

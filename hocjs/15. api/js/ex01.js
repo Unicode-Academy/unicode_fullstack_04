@@ -28,7 +28,13 @@ const userApi = `http://localhost:3000/users`;
 //     console.log(data);
 //   });
 const getUsers = async () => {
-  const response = await fetch(userApi);
+  const response = await fetch(
+    `${userApi}?_sort=id&_order=desc&_limit=2&_page=1`
+  );
+  //Lấy danh sách bản ghi khi sử dụng limit --> Áp dụng giải quyết bài toán phân trang
+  const total = response.headers.get("x-total-count");
+  console.log(`${total} users`);
+
   const data = await response.json();
   console.log(data);
 };
@@ -64,4 +70,26 @@ const deleteUser = async (id) => {
     console.log("Xóa thành cong");
   }
 };
-deleteUser(1);
+// deleteUser(1);
+
+const updateUser = async (data, id) => {
+  const response = await fetch(`${userApi}/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  if (response.ok) {
+    console.log("Thành công");
+  }
+};
+
+// updateUser(
+//   {
+//     email: "contact@unicode.vn",
+//   },
+//   4
+// );
+
+getUsers();
