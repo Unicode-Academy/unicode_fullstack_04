@@ -1,6 +1,15 @@
 import { BASE_API } from "./config.js";
 import { debounce } from "./utils.js";
-
+const LIMIT = 3;
+let PAGE = 1;
+const query = {
+  limit: LIMIT,
+  page: PAGE,
+  keyword: "",
+  order: "desc",
+  sort: "id",
+  posts: [],
+};
 const renderPosts = (posts) => {
   //Xử lý innerHTML
   const html = posts
@@ -12,26 +21,80 @@ const renderPosts = (posts) => {
           </p>
           <button class="btn btn-primary btn-sm">Detail</button>
           <button class="btn btn-warning btn-sm js-edit-btn" data-id="${post.id}">Edit</button>
+          <button class="btn btn-danger btn-sm js-delete-btn" data-id="${post.id}">Delete</button>
         </div>`
     )
     .join("");
   const postListEl = document.querySelector(".js-post-list");
   postListEl.innerHTML = html;
-  postListEl.addEventListener("click", (e) => {
-    if (e.target.classList.contains("js-edit-btn")) {
-      const postId = e.target.dataset.id;
-      //Gọi hàm để show modal
-      modalForm.show({
-        type: "update",
-        id: postId,
-      });
-    }
-  });
 };
-const getPosts = async (keyword = "") => {
-  const response = await fetch(`${BASE_API}/posts?q=${keyword}`);
+const handleDeletePost = async (postId) => {
+  if (confirm("Are you sure you want to delete this post?")) {
+    const { posts } = query;
+    if (posts.length === 1 && query.page > 1) {
+      query.page = query.page - 1;
+    }
+    const status = await deletePost(postId);
+    if (status) {
+      getPosts();
+    }
+  }
+};
+const renderPagination = (totalPages) => {
+  const paginationEl = document.querySelector(".js-pagination");
+  let paginationItems = "";
+  for (let i = 1; i <= totalPages; i++) {
+    paginationItems += `<li class="page-item"><a class="page-link js-page-link ${
+      query.page === i ? "active" : ""
+    }" href="#">${i}</a></li>`;
+  }
+  paginationEl.innerHTML = `<li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        ${paginationItems}
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>`;
+};
+const renderSort = () => {
+  const sortEl = document.querySelector(".js-sort");
+
+  sortEl.innerHTML = `
+  <button class="btn btn-primary ${
+    query.order === "desc" ? "active" : ""
+  }" data-order="desc">Mới nhất</button>
+  <button class="btn btn-primary  ${
+    query.order === "asc" ? "active" : ""
+  }" data-order="asc">Cũ nhất</button>`;
+};
+const getPosts = async () => {
+  const { keyword, limit, page, order, sort } = query;
+  const response = await fetch(
+    `${BASE_API}/posts?q=${keyword}&_limit=${limit}&_page=${page}&_order=${order}&_sort=${sort}`
+  );
   const posts = await response.json();
+  query.posts = posts;
   renderPosts(posts);
+  //Lấy được tổng số bản ghi
+  const postCount = response.headers.get("x-total-count");
+
+  //Tính tổng số trang
+  const totalPages = Math.ceil(postCount / LIMIT);
+
+  renderPagination(totalPages);
+
+  renderSort();
+};
+
+const deletePost = async (postId) => {
+  const response = await fetch(`${BASE_API}/posts/${postId}`, {
+    method: "DELETE",
+  });
+  return response.ok;
 };
 
 getPosts();
@@ -41,7 +104,10 @@ searchInputEl.addEventListener(
   "input",
   debounce(({ target }) => {
     const keyword = target.value;
-    getPosts(keyword);
+    query.keyword = keyword;
+    query.order = "desc";
+    query.page = 1;
+    getPosts();
   }, 500)
 );
 
@@ -185,11 +251,49 @@ form.addEventListener("submit", async (e) => {
         //Trả về thông báo lỗi
         alert("Error network");
       } else {
+        query.page = 1;
+        query.order = "desc";
         //Thành công
         getPosts(); //Call lại API -> Làm mới danh sách
         //Đóng modal
         modalForm.hide(); //Hàm của bootstrap
       }
     }
+  }
+});
+
+const paginationEl = document.querySelector(".js-pagination");
+paginationEl.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (e.target.classList.contains("js-page-link")) {
+    const page = Number(e.target.innerText);
+    query.page = page;
+    getPosts();
+  }
+});
+
+const sortEl = document.querySelector(".js-sort");
+sortEl.addEventListener("click", (e) => {
+  if (e.target.classList.contains("btn")) {
+    const order = e.target.dataset.order;
+    query.order = order;
+    getPosts();
+  }
+});
+
+const postListEl = document.querySelector(".js-post-list");
+postListEl.addEventListener("click", (e) => {
+  if (e.target.classList.contains("js-edit-btn")) {
+    const postId = e.target.dataset.id;
+    //Gọi hàm để show modal
+    modalForm.show({
+      type: "update",
+      id: postId,
+    });
+  }
+
+  if (e.target.classList.contains("js-delete-btn")) {
+    const postId = e.target.dataset.id;
+    handleDeletePost(postId);
   }
 });
