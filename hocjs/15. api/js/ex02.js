@@ -11,11 +11,22 @@ const renderPosts = (posts) => {
             ${post.excerpt}
           </p>
           <button class="btn btn-primary btn-sm">Detail</button>
+          <button class="btn btn-warning btn-sm js-edit-btn" data-id="${post.id}">Edit</button>
         </div>`
     )
     .join("");
   const postListEl = document.querySelector(".js-post-list");
   postListEl.innerHTML = html;
+  postListEl.addEventListener("click", (e) => {
+    if (e.target.classList.contains("js-edit-btn")) {
+      const postId = e.target.dataset.id;
+      //Gọi hàm để show modal
+      modalForm.show({
+        type: "update",
+        id: postId,
+      });
+    }
+  });
 };
 const getPosts = async (keyword = "") => {
   const response = await fetch(`${BASE_API}/posts?q=${keyword}`);
@@ -34,23 +45,93 @@ searchInputEl.addEventListener(
   }, 500)
 );
 
+//Hàm thêm dữ liệu lên server
+const addPost = async (data) => {
+  const response = await fetch(`${BASE_API}/posts`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  return response.ok;
+};
+
+//Hàm lấy dữ liệu từ API
+const getPost = async (postId) => {
+  try {
+    const response = await fetch(`${BASE_API}/posts/${postId}`);
+    if (!response.ok) {
+      throw new Error("Post not found");
+    }
+    return response.json();
+  } catch {
+    return false;
+  }
+};
+
+//Hàm cập nhật dữ liệu vào form
+const fillFormData = async (postId) => {
+  const form = modalEl.querySelector("form");
+  const post = await getPost(postId);
+  if (!post) {
+    return alert("Post not found");
+  }
+  //Data trả về thành công
+  form.querySelector("fieldset").disabled = false;
+  form.querySelector(".overlay").style.display = "none";
+  Object.keys(post).forEach((key) => {
+    if (form.elements[key]) {
+      form.elements[key].value = post[key];
+    }
+  });
+};
+
+//Hàm update dữ liệu lên API
+const updatePost = async (data, id) => {
+  const response = await fetch(`${BASE_API}/posts/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  return response.ok;
+};
+
 const addBtnEl = document.querySelector(".js-add-btn");
 const modalEl = document.getElementById("modal-form");
 const modalForm = new bootstrap.Modal(modalEl);
 addBtnEl.addEventListener("click", () => {
   modalForm.show("add"); //Không có gì đảm bảo hàm này thành công
+  form.querySelector("fieldset").disabled = false;
+  form.querySelector(".overlay").style.display = "none";
 });
 
 modalEl.addEventListener("shown.bs.modal", (e) => {
+  const modalTitle = modalEl.querySelector(".modal-title");
   if (e.relatedTarget === "add") {
-    const modalTitle = modalEl.querySelector(".modal-title");
     modalTitle.innerText = `Create new blog`;
+  } else if (e.relatedTarget.type === "update") {
+    modalTitle.innerText = `Update blog`;
+    const form = modalEl.querySelector("form");
+    form.dataset.id = e.relatedTarget.id;
+    fillFormData(e.relatedTarget.id);
   }
 });
 
 modalEl.addEventListener("hidden.bs.modal", () => {
   const modalTitle = modalEl.querySelector(".modal-title");
   modalTitle.innerText = "";
+
+  const form = modalEl.querySelector("form");
+  form.reset();
+
+  //Tạo loading
+  form.querySelector("fieldset").disabled = true;
+  form.querySelector(".overlay").style.display = "flex";
+
+  form.removeAttribute("data-id");
 });
 
 const form = modalEl.querySelector("form");
@@ -86,28 +167,29 @@ form.addEventListener("submit", async (e) => {
     });
   } else {
     //Không có lỗi
-    //Call API thêm dữ liệu lên back-end
-    const status = await addPost({ title, excerpt, content });
-    if (!status) {
-      //Trả về thông báo lỗi
-      alert("Error network");
+    if (form.dataset.id) {
+      //Call API update data
+      const postId = form.dataset.id;
+      const status = await updatePost({ title, excerpt, content }, postId);
+      if (!status) {
+        alert("Can't update post this time");
+      } else {
+        getPosts(); //Call lại API -> Làm mới danh sách
+        //Đóng modal
+        modalForm.hide(); //Hàm của bootstrap
+      }
     } else {
-      //Thành công
-      getPosts(); //Call lại API -> Làm mới danh sách
-      //Đóng modal
-      modalForm.hide(); //Hàm của bootstrap
+      //Call API thêm dữ liệu lên back-end
+      const status = await addPost({ title, excerpt, content });
+      if (!status) {
+        //Trả về thông báo lỗi
+        alert("Error network");
+      } else {
+        //Thành công
+        getPosts(); //Call lại API -> Làm mới danh sách
+        //Đóng modal
+        modalForm.hide(); //Hàm của bootstrap
+      }
     }
   }
 });
-
-//Hàm thêm dữ liệu lên server
-const addPost = async (data) => {
-  const response = await fetch(`${BASE_API}/posts`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-  return response.ok;
-};
