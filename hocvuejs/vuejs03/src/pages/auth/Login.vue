@@ -22,20 +22,18 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { saveToken } from "../../utils/auth";
+import { instance } from "../../configs/axios";
 const email = ref("");
 const password = ref("");
 const msg = ref("");
 const router = useRouter();
 const handlLogin = async () => {
-  const response = await fetch(`https://api.escuelajs.co/api/v1/auth/login`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ email: email.value, password: password.value }),
+  const response = await instance.post(`/auth/login`, {
+    email: email.value,
+    password: password.value,
   });
-  if (response.ok) {
-    const data = await response.json();
+  if (response.status === 201) {
+    const data = response.data;
     //Lưu vào localStorage
     saveToken(data);
     router.push({ name: "home" });

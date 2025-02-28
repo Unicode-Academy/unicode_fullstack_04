@@ -1,8 +1,7 @@
 export const GuestMiddleware = (to, from, next) => {
-  const isAuth = false;
-  if (!isAuth) {
-    next();
-  } else {
+  if (!to.meta.isLoading && to.meta.isAuth) {
     next({ name: "home" });
+  } else {
+    next();
   }
 };

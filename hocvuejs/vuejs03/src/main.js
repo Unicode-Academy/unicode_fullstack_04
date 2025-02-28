@@ -3,6 +3,7 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import { routes } from "./configs/routes";
 import { getToken } from "./utils/auth";
+import { instance } from "./configs/axios";
 const app = createApp(App);
 
 const router = createRouter({
@@ -36,31 +37,15 @@ const router = createRouter({
 // });
 
 router.beforeEach(async (to, from, next) => {
-  console.log(1);
-
-  const token = getToken();
-  if (token.access_token) {
-    to.meta.isLoading = true;
-    try {
-      const response = await fetch(
-        `https://api.escuelajs.co/api/v1/auth/profile`,
-        {
-          headers: {
-            Authorization: `Bearer ${token.access_token}`,
-          },
-        }
-      );
-      if (!response.ok) {
-        throw new Error("Error");
-      }
-      const user = await response.json();
-      to.meta.user = user;
-      to.meta.isAuth = true;
-    } catch {
-      to.meta.isAuth = false;
-    } finally {
-      to.meta.isLoading = false;
-    }
+  try {
+    const response = await instance.get(`/auth/profile`);
+    const user = response.data;
+    to.meta.user = user;
+    to.meta.isAuth = true;
+  } catch (error) {
+    to.meta.isAuth = false;
+  } finally {
+    to.meta.isLoading = false;
   }
   next();
 });
