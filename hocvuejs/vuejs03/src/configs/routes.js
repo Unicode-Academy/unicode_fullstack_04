@@ -9,6 +9,7 @@ import Login from "../pages/auth/Login.vue";
 import AuthLayout from "../layouts/AuthLayout.vue";
 import { GuestMiddleware } from "../middlewares/GuestMiddleware";
 import { AuthMiddleware } from "../middlewares/AuthMiddleware";
+import Demo from "../pages/demo/Demo.vue";
 export const routes = [
   { path: "/", name: "home", component: Home },
   { path: "/gioi-thieu", name: "about", component: About },
@@ -49,5 +50,10 @@ export const routes = [
     // },
   },
   { path: "/404", name: "error", component: Error },
+  {
+    path: "/demo",
+    name: "demo",
+    component: Demo,
+  },
   { path: "/:catchAll(.*)", component: Error },
 ];

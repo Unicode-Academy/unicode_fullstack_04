@@ -37,16 +37,20 @@ const router = createRouter({
 // });
 
 router.beforeEach(async (to, from, next) => {
-  try {
-    const response = await instance.get(`/auth/profile`);
-    const user = response.data;
-    to.meta.user = user;
-    to.meta.isAuth = true;
-  } catch (error) {
-    to.meta.isAuth = false;
-  } finally {
-    to.meta.isLoading = false;
+  const token = getToken;
+  if (token.access_token) {
+    try {
+      const response = await instance.get(`/auth/profile`);
+      const user = response.data;
+      to.meta.user = user;
+      to.meta.isAuth = true;
+    } catch (error) {
+      to.meta.isAuth = false;
+    } finally {
+      to.meta.isLoading = false;
+    }
   }
+
   next();
 });
 
